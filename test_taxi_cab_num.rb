@@ -1,7 +1,6 @@
 require 'pry'
 
 require 'minitest/autorun'
-# require 'minitest/autorun'
 require './taxi_cab_num'
 
 class TestTaxiCabNum < MiniTest::Unit::TestCase
@@ -23,10 +22,6 @@ class TestTaxiCabNum < MiniTest::Unit::TestCase
   end
 
   def test_that_max_lesser_cube_returns_array_of_cubes
-    puts '--- hawk ---'
-    tc_num_12.define_steps
-    cube_list = tc_num_12.cubes
-    # binding.pry
     tc_num_12.cubes.must_equal [0, 1, 8]
   end
 
@@ -48,7 +43,7 @@ class TestTaxiCabNum < MiniTest::Unit::TestCase
   end
 
   def test_that_for_35_cube_pairs_is_right
-    binding.pry
+    # binding.pry
     tc_num_35.cube_pairs.call.must_equal [[8, 27]]
   end
 

@@ -1,12 +1,12 @@
-#taxi-cab-numbers
-#=========
+# taxi-cab-numbers
+# =========
 #
-#from
+# from
 #    - http://www.primepuzzles.net/puzzles/puzz_090.htm
 #    - http://en.wikipedia.org/wiki/Taxicab_number
 #    - http://euler.free.fr/taxicab.htm
 #
-#given a positive integer, find all the ways it can be written as the sum of two different cubes.
+# given a positive integer, find all the ways it can be written as the sum of two different cubes.
 
 require 'pry'
 
@@ -18,7 +18,9 @@ class TaxiCabNum
 
   def initialize(num)
     @test_num = num
+
     @cubes = []
+
     @cubes_hash = {}
 
     define_steps
@@ -38,8 +40,6 @@ class TaxiCabNum
       @cubes_hash       = valid_base_nums.inject({}) { |h, n| h[n] = n * n * n; h }
 
       @cubes            = @cubes_hash.values
-
-      @cubes_hash
     end
 
     @is_complement_a_cube = ->(num) { cubes.include? (test_num - num) }
@@ -47,23 +47,21 @@ class TaxiCabNum
     @is_a_sum_of_cubes = -> do cubes.any? { |num| is_complement_a_cube.call num } end
 
     @cube_pairs = -> do
-      chash = lesser_cubes.call
-      puts '--- hasty duck ---'
-      # binding.pry
+      chash = cubes_hash
+
       list = []
+
       inverted_chash = chash.invert
 
       chash.each_pair do |num, num_cube|
         complement = test_num - num_cube
 
         if inverted_chash.keys.include?(complement)
-          list << [num, inverted_chash[complement]]
+          list << [num_cube, complement]  if num_cube < complement
         end
-
-        list << [num, inverted_chash[complement]]
       end
 
-      # binding.pry
+      list
     end
   end
 end
