@@ -25,7 +25,6 @@ class TestTaxiCabNum < MiniTest::Unit::TestCase
   end
 
   def test_that_for_27_complement_of_19_is_a_cube
-
     tc_num_27.is_complement_a_cube.call(19).must_equal true
   end
 
@@ -42,7 +41,6 @@ class TestTaxiCabNum < MiniTest::Unit::TestCase
   end
 
   def test_that_for_35_cube_pairs_is_right
-    # binding.pry
     tc_num_35.cube_pairs.call.must_equal [[8, 27]]
   end
 
