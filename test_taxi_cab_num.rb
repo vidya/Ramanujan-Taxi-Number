@@ -14,7 +14,6 @@ class TestTaxiCabNum < MiniTest::Unit::TestCase
 
   def test_if_max_lesser_cube_works_for_12
     tc_num_12.cubes.max.must_equal 8
-    # binding.pry
   end
 
   def test_if_max_lesser_cube_works_for_27

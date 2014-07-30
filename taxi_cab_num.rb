@@ -32,7 +32,6 @@ class TaxiCabNum
     not cube_pairs.empty?
   end
 
-  #--- private ---
   def define_steps
     @lesser_cubes = -> do
       valid_base_nums   = (0..test_num).select { |n| (n * n * n) <= test_num }
@@ -47,16 +46,14 @@ class TaxiCabNum
     @is_a_sum_of_cubes = -> do cubes.any? { |num| is_complement_a_cube.call num } end
 
     @cube_pairs = -> do
-      chash = cubes_hash
-
       list = []
 
-      inverted_chash = chash.invert
+      inverted_cubes_hash = cubes_hash.invert
 
-      chash.each_pair do |num, num_cube|
+      cubes_hash.each_pair do |num, num_cube|
         complement = test_num - num_cube
 
-        if inverted_chash.keys.include?(complement)
+        if inverted_cubes_hash.keys.include?(complement)
           list << [num_cube, complement]  if num_cube < complement
         end
       end
